@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Create() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const history = useNavigate();
 
   const header = { "Access-Control-Allow-Origin": "*"};
 
@@ -14,9 +17,14 @@ function Create() {
       name: name,
       email: email,
       header
+    })
+    .then(() => {
+      history("/read");
     });
+
   }
 
+  
   return (
     <>
       <h1>Create</h1>
