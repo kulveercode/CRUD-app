@@ -13,6 +13,13 @@ export default function Read() {
       });
   }
 
+  function handleDelete(id) {
+    axios.delete(`https://655f7193879575426b455b36.mockapi.io/crud/${id}`)
+    .then(() => {
+      getData();
+    });
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -42,7 +49,10 @@ export default function Read() {
                     <button className="btn-success">Edit</button>
                   </td>
                   <td>
-                    <button className="btn-danger">Delete</button>
+                    <button 
+                    className="btn-danger"
+                    onClick={() => handleDelete(eachData.id)}
+                    >Delete {" "}</button>
                   </td>
                 </tr>
               </tbody>
